@@ -1,0 +1,15 @@
+<html>
+  <body>
+    <script>
+      fetch("https://dev.to/api/articles?username=j471n")
+        .then((Response) => Response.json())
+        .then((data) => console.log(data))
+        .catch((error) => console.log("aldaa", error));
+
+      fetch("./mochdata.json¡")
+        .then((Response) => Response.json())
+        .then((data) => console.log(data))
+        .catch((error) => console.log("error404", error));
+    </script>
+  </body>
+</html>
