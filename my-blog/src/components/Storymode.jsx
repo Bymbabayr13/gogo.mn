@@ -3,7 +3,7 @@ import Link from "next/link";
 export function Storymode({ promps }) {
   return (
     <>
-      <Link href={promps.path} className="relative  p-[10px] ">
+      <Link href={promps.path} className=" relative p-[10px] ">
         <img
           className=" h-80 rounded-md"
           style={{ aspectRatio: "6/4" }}
