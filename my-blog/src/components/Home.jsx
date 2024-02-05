@@ -27,7 +27,7 @@ export function Home() {
           <p className="text-gray-600">August 20, 2022</p>
         </div>
       </div>
-      <div className="flex justify-end mb-24">
+      <div className=" justify-end mb-24 md:flex hidden">
         <button className="border p-2 rounded">
           {" "}
           <IoChevronBack />{" "}

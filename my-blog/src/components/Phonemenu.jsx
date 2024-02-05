@@ -4,7 +4,7 @@ import { Menudata } from "./data/Menudata";
 import Link from "next/link";
 export function Phonemenu() {
   return (
-    <div className="fixed  inset-0  z-10   bg-white p-6">
+    <div className="fixed  inset-0  z-10   p-6">
       <div className="flex justify-between transition-all bottom-0 top-0 -right-full">
         <Menub />
         <div className="">

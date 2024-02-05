@@ -11,9 +11,7 @@ export function Header() {
       <div className="">
         <Logo />
       </div>
-      <div className="md:hidden mr-4">
-        <Phonemenu />
-      </div>
+      <div className="md:hidden mr-4">{/* <Phonemenu /> */}</div>
       <div className="md:block hidden">
         <Menu items={Menudata} />
       </div>
