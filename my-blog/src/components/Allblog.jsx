@@ -12,7 +12,7 @@ export function Allblog() {
 
   function Nextpage() {
     fetch(
-      `https://dev.to/api/articles?username=j471n&per_page=9&page=${page + 1}`
+      `https://dev.to/api/articles?username=j471n&per_page=9&page=${page + 1} `
     )
       .then((response) => response.json())
       .then((data) => {
@@ -20,6 +20,18 @@ export function Allblog() {
         setPage(page + 1);
       });
   }
+
+  async function getTag({ item }) {
+    const path = await fetch(
+      `https://dev.to/api/articles?username=j471n&per_page=9&page=${
+        page + 1
+      }&tag=${item}`
+    );
+    const data = await path.json();
+    setArticles(data);
+  }
+
+  const arr = ["All", "Design", "Travel", "Fashion", "Technology", "Branding"];
   return (
     <div>
       <p className="font-bold text-2xl md:mb-8 my-4 flex justify-center md:block">
@@ -27,12 +39,9 @@ export function Allblog() {
       </p>
       <div className="md:flex hidden  justify-between">
         <div className="flex gap-3">
-          <p className="text-yellow-500">All</p>
-          <p>Design</p>
-          <p>Travel</p>
-          <p>Fashion</p>
-          <p>Technology</p>
-          <p>Branding</p>
+          {arr.map((item) => {
+            return <p onClick={getTag}>{item}</p>;
+          })}
         </div>
         <p>View All</p>
       </div>

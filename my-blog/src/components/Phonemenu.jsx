@@ -1,18 +1,40 @@
 import { Menub } from "./icon/Menub";
 import { IoIosClose } from "react-icons/io";
 import { Menudata } from "./data/Menudata";
-import Link from "next/link";
+import { Link } from "next/link";
+import { useState } from "react";
+import { Logo } from "./icon/Logo";
 export function Phonemenu() {
+  const [visible, setVisible] = useState(false);
+  function closeBtn() {
+    setVisible(false);
+  }
+  function openBtn() {
+    setVisible(true);
+  }
+
   return (
-    <div className="fixed  inset-0  z-10   p-6">
-      <div className="flex justify-between transition-all bottom-0 top-0 -right-full">
+    <>
+      <div onClick={openBtn}>
         <Menub />
-        <div className="">
-          <IoIosClose style={{ fontSize: "40px" }} />
+      </div>
+      <div
+        className={`fixed w-full top-0 bottom-0 z-10 transition-all  bg-white p-6  -right-full ${
+          visible ? "right-0" : "-right-full"
+        }
+       `}
+      >
+        <div className="flex justify-between   ">
+          <Logo />
+          <div className="" onClick={closeBtn}>
+            <IoIosClose style={{ fontSize: "40px" }} />
+          </div>
+        </div>
+        <div onClick={closeBtn}>
+          <Menulist data={Menudata} />
         </div>
       </div>
-      <Menulist data={Menudata} />
-    </div>
+    </>
   );
 }
 

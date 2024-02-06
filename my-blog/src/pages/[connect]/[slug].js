@@ -1,29 +1,15 @@
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import Link from "next/link";
-
-export default function home() {
-  const [details, setDetails] = useState();
-  const router = useRouter();
-  useEffect(() => {
-    if (router.query.connect) {
-      fetch(
-        `https://dev.to/api/articles/${router.query.connect}/${router.query.slug}`
-      )
-        .then((response) => response.json())
-        .then((data) => setDetails(data));
-    }
-  }, [router.query]);
-
-  console.log({ details });
-
-  if (details === undefined) return null;
-
+import Head from "next/head";
+export default function home({ details }) {
   return (
     <>
       <div className="container max-w-7xl mx-auto  p-5">
+        <Head>
+          <meta property="og:title" content={details.title} />
+          <meta property="og:image" content={details.cover_image} />
+        </Head>
+
         <div className="container mx-auto m-4   ">
           <Header />
         </div>
@@ -53,4 +39,12 @@ export default function home() {
       </div>
     </>
   );
+}
+
+export async function getServerSideProps({ query }) {
+  const res = await fetch(
+    `https://dev.to/api/articles/${query.connect}/${query.slug}`
+  );
+  const details = await res.json();
+  return { props: { details } };
 }

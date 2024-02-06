@@ -2,7 +2,6 @@ import { Logo } from "./icon/Logo";
 import { Menudata } from "./data/Menudata";
 import Link from "next/link";
 import { Search } from "./icon/Search";
-import { Menub } from "./icon/Menub";
 import { Phonemenu } from "./Phonemenu";
 
 export function Header() {
@@ -11,7 +10,9 @@ export function Header() {
       <div className="">
         <Logo />
       </div>
-      <div className="md:hidden mr-4">{/* <Phonemenu /> */}</div>
+      <div className="md:hidden mr-4">
+        <Phonemenu />
+      </div>
       <div className="md:block hidden">
         <Menu items={Menudata} />
       </div>
