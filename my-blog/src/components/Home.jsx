@@ -37,8 +37,14 @@ export function Home() {
           <IoIosArrowForward />
         </button>
       </div>
+      <div className="my-10">
+        <p className="text-2xl font-bold md:block  md:m-0 flex justify-center ">
+          Trending
+        </p>
+        <Trendingitem promps={arr} />
+      </div>
       <h1 className="text-2xl font-bold md:block  md:m-0 flex justify-center ">
-        Trending
+        Story
       </h1>
       <div className="" style={{ overflow: "scroll" }}>
         <div className="flex" style={{ width: "20000px" }}>
@@ -52,4 +58,11 @@ export function Home() {
       </div>
     </>
   );
+}
+function Trendingitem({ promps }) {
+  {
+    promps.sort((trendingitem, vs) => {
+      trendingitem.public_reactions_count - vs.public_reactions_count;
+    });
+  }
 }

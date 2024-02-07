@@ -3,7 +3,7 @@ import { Card } from "./Card";
 export function Allblog() {
   const [articles, setArticles] = useState([]);
   const [page, setPage] = useState(1);
-
+  const [activeFilter, setActiveFilter] = useState();
   useEffect(() => {
     fetch("https://dev.to/api/articles?username=j471n&per_page=9&page=1")
       .then((Response) => Response.json())
@@ -21,7 +21,7 @@ export function Allblog() {
       });
   }
 
-  async function getTag({ item }) {
+  async function getTag(item) {
     const path = await fetch(
       `https://dev.to/api/articles?username=j471n&per_page=9&page=${
         page + 1
@@ -29,9 +29,21 @@ export function Allblog() {
     );
     const data = await path.json();
     setArticles(data);
+    // if (item == "All") {
+    //   setArticles(value);
+    // }
+    setActiveFilter(item);
   }
 
-  const arr = ["All", "Design", "Travel", "Fashion", "Technology", "Branding"];
+  const arr = [
+    "All",
+    "github",
+    "beginners",
+    "javascript",
+    "programming",
+    "tutorial",
+    "ai",
+  ];
   return (
     <div>
       <p className="font-bold text-2xl md:mb-8 my-4 flex justify-center md:block">
@@ -40,7 +52,16 @@ export function Allblog() {
       <div className="md:flex hidden  justify-between">
         <div className="flex gap-3">
           {arr.map((item) => {
-            return <p onClick={getTag}>{item}</p>;
+            return (
+              <p
+                className={`${
+                  activeFilter == item ? "text-yellow-400" : "text-black"
+                }`}
+                onClick={() => getTag(item)}
+              >
+                {item}
+              </p>
+            );
           })}
         </div>
         <p>View All</p>
