@@ -23,7 +23,7 @@ export function Section() {
   function Goleft() {}
   function Goright() {}
   return (
-    <div>
+    <div className="hidden">
       {render.map((item, index) => {
         return (
           <div className="grid grid-cols-5">
