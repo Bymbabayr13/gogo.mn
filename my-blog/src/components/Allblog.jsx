@@ -29,9 +29,11 @@ export function Allblog() {
     );
     const data = await path.json();
     setArticles(data);
-    // if (item == "All") {
-    //   setArticles(value);
-    // }
+    if (item == "All") {
+      fetch("https://dev.to/api/articles?username=j471n&per_page=9&page=1")
+        .then((Response) => Response.json())
+        .then((data) => setArticles(data));
+    }
     setActiveFilter(item);
   }
 

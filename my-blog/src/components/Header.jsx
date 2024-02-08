@@ -8,7 +8,9 @@ export function Header() {
   return (
     <div className="flex justify-between">
       <div className="">
-        <Logo />
+        <Link href={"/"}>
+          <Logo />
+        </Link>
       </div>
       <div className="md:hidden mr-4">
         <Phonemenu />

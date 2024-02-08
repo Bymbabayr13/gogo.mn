@@ -1,7 +1,6 @@
 import { Menub } from "./icon/Menub";
 import { IoIosClose } from "react-icons/io";
 import { Menudata } from "./data/Menudata";
-import { Link } from "next/link";
 import { useState } from "react";
 import { Logo } from "./icon/Logo";
 export function Phonemenu() {
@@ -25,7 +24,10 @@ export function Phonemenu() {
        `}
       >
         <div className="flex justify-between   ">
-          <Logo />
+          <a href="/">
+            {" "}
+            <Logo />{" "}
+          </a>
           <div className="" onClick={closeBtn}>
             <IoIosClose style={{ fontSize: "40px" }} />
           </div>

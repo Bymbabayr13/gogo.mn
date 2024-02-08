@@ -20,6 +20,9 @@ export function Storymode({ promps }) {
           <h1 className="text-sm bg-black mt-1 mx-auto text-slate-200 px-2 rounded font-bold">
             {promps.title}
           </h1>
+          <p className="bg-slate-100 opacity-80  rounded inline px-2">
+            Like:{promps.positive_reactions_count}
+          </p>
         </div>
       </Link>
     </>
