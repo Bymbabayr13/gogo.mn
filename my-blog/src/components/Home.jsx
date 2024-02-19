@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Allblog } from "./Allblog";
 import { Storymode } from "./Storymode";
 import { data } from "autoprefixer";
-
+  
 import { Section } from "./Section";
 export function Home() {
   const [arr, setArr] = useState([]);

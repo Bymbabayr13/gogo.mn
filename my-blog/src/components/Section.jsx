@@ -8,7 +8,7 @@ export function Section() {
 
   async function fetchData() {
     const path = await fetch(
-      "https://dev.to/api/articles?username=mmazzarolo&per_page=5"
+      "https://dev.to/api/articles?username=mmazzarolo&per_page=1"
     );
     const data = await path.json();
     setRender(data);
@@ -23,12 +23,15 @@ export function Section() {
   function Goleft() {}
   function Goright() {}
   return (
-    <div className="hidden">
+    <div className="">
       {render.map((item, index) => {
         return (
-          <div className="grid grid-cols-5">
+          <div className="">
             <div>
-              <div style={{ backgroundImage: `url(${item.cover_image})` }}>
+              <div
+                style={{ backgroundImage: `url(${item.cover_image})` }}
+                className="w-full h-1/2"
+              >
                 sadfsafdsafss
               </div>
             </div>
