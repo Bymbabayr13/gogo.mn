@@ -3,19 +3,22 @@ const express = require("express");
 const app = express();
 const port = 3000;
 const fs = require("fs");
+var cors = require("cors");
 
+app.use(express.json());
+app.use(cors());
 app.get("/create", (req, res) => {
-  const content = {
-    name: req.query.title,
-    desc: req.query.desc,
-  };
-  fs.writeFileSync("test.json", JSON.stringify(content));
-  res.json([{ ner: "ok" }]);
-});
-
-app.get("/", (req, res) => {
+  const { title, desc } = req.query;
   const data = fs.readFileSync("test.json", "utf8");
-  res.json(JSON.parse(data));
+  const list = JSON.parse(data);
+  const articleid = list.length + 1;
+  list.push({
+    id: articleid,
+    name: title,
+    desc: desc,
+  });
+  fs.writeFileSync("test.json", JSON.stringify(list));
+  res.json({ list });
 });
 
 app.listen(port, () => {
