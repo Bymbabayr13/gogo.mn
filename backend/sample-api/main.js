@@ -22,6 +22,7 @@ app.post("/create", (req, res) => {
   list.push({
     id: articleid,
     title: title,
+    desc: desc,
   });
 
   fs.writeFileSync("test.json", JSON.stringify(list));
@@ -33,11 +34,24 @@ app.delete("/create/delete/:id", (req, res) => {
   console.log(id);
   const data = fs.readFileSync("test.json", "utf8");
   const list = JSON.parse(data);
-  console.log("list");
+
+  console.log(list);
   const newList = list.filter((item) => item.id !== Number(id));
   console.log("new", newList);
 
   fs.writeFileSync("test.json", JSON.stringify(newList));
+  res.json([{ status: "Success" }]);
+});
+
+app.put("/create/update/:id", (req, res) => {
+  const { id } = req.params;
+  const { title, desc } = req.body;
+  const data = fs.readFileSync("test.json", "utf8");
+  const list = JSON.parse(data);
+  const index = list.findIndex((item) => item.id == Number(id));
+  list[index].desc = desc;
+  list[index].title = title;
+  fs.writeFileSync("test.json", JSON.stringify(list));
   res.json([{ status: "Success" }]);
 });
 
