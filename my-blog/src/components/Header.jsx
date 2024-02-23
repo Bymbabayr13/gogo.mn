@@ -16,7 +16,7 @@ export function Header() {
         <Phonemenu />
       </div>
       <div className="md:block hidden">
-        <Menu items={Menudata} />
+        <MenuList items={Menudata} />
       </div>
       <div className=" hidden md:flex  bg-slate-300 rounded-sm relative">
         <input
@@ -31,7 +31,7 @@ export function Header() {
   );
 }
 
-function Menu({ items }) {
+function MenuList({ items }) {
   return (
     <div className="flex gap-4 text-lg mt-1">
       {items.map((item) => {
