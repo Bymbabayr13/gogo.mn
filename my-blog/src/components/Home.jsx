@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { Allblog } from "./Allblog";
 import { Storymode } from "./Storymode";
-import { data } from "autoprefixer";
-  
-import { Section } from "./Section";
+// import { Section } from "./Section";
+
 export function Home() {
   const [arr, setArr] = useState([]);
   useEffect(() => {
@@ -15,7 +14,7 @@ export function Home() {
   return (
     <>
       {" "}
-      <Section />
+      {/* <Section /> */}
       <div className="my-10"></div>
       <h1 className="text-2xl font-bold md:block  md:m-0 flex justify-center ">
         Trending
