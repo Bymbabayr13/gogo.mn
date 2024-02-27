@@ -24,36 +24,24 @@ const readTask = async (_req, res) => {
 };
 
 const createTask = async (req, res) => {
-  const read = await sql`select * from tasks`;
-  const { title } = req.body;
-  const articleid = read.length + 1;
-  const list = await sql`insert into tasks values(${articleid},${title})`;
+  const { title, desc } = req.body;
+  const list =
+    await sql`insert into tasks(id, title, description) values(${Date.now()},${title},${desc})`;
   res.json(list);
-  console.log(articleid, title);
 };
 
 const deleteTask = async (req, res) => {
   const { id } = req.params;
-  console.log(id);
-  const data = fs.readFileSync("test.json", "utf8");
-  const list = JSON.parse(data);
-  const newList = list.filter((item) => item.id !== Number(id));
-  fs.writeFileSync("test.json", JSON.stringify(newList));
-  res.json([{ status: "Success" }]);
+  const list = await sql`delete from tasks where id = ${id}`;
+  res.json(list);
 };
 
 const updateTask = async (req, res) => {
   const { id } = req.params;
   const { title, desc } = req.body;
-  const data = fs.readFileSync("test.json", "utf8");
-  const list = JSON.parse(data);
-  const index = list.findIndex((item) => item.id == Number(id));
-  console.log(Number(id), id, list);
-  list[index].title = title;
-  list[index].desc = desc;
-
-  fs.writeFileSync("test.json", JSON.stringify(list));
-  res.json([{ status: "Success" }]);
+  const list =
+    await sql`update tasks set title = ${title} ,description = ${desc} where id= ${id} `;
+  res.json(list);
 };
 
 module.exports = {

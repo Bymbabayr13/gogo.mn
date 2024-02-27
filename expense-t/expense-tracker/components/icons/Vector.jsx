@@ -1,6 +1,7 @@
 export function Vector() {
   return (
     <svg
+      className="text-white"
       width="29"
       height="28"
       viewBox="0 0 29 28"
