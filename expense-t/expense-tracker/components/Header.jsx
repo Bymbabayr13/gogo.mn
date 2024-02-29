@@ -1,13 +1,20 @@
 import Link from "next/link";
 import { Vector } from "./icons/Vector";
 export function Header() {
-  const arr = [{ name: "Dashboard" }, { name: "Records" }];
+  const arr = [
+    { name: "Dashboard", link: "/" },
+    { name: "Records", link: "/records" },
+  ];
   return (
     <div className="flex justify-between">
       <div className="flex">
         <Vector />
         {arr.map((item, index) => {
-          return <a className="ml-2">{item.name}</a>;
+          return (
+            <a href={item.link} className="ml-2">
+              {item.name}
+            </a>
+          );
         })}
       </div>
       <div className="flex">

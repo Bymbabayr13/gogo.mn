@@ -1,10 +1,16 @@
+import { useState } from "react";
+
 export function Showmodal() {
+  const [amount, setAmount] = useState();
+  function addCard() {
+    document.getElementById("my_modal_2").showModal();
+  }
+  function amountInput(event) {
+    setAmount(event.target.value);
+  }
   return (
     <div>
-      <button
-        className="btn bg-blue-600 text-white px-8"
-        onClick={() => document.getElementById("my_modal_2").showModal()}
-      >
+      <button className="btn bg-blue-600 text-white px-8" onClick={addCard}>
         +add
       </button>
       <dialog id="my_modal_2" className="modal ">
@@ -12,14 +18,15 @@ export function Showmodal() {
           <div className="p-4">
             <h3 className="font-bold text-lg mb-5">add record</h3>
             <div className="flex">
-              <button className="btn bg-blue-600">Expense</button>
-              <button className="btn">Income</button>
+              <button className="btn  bg-blue-600">Expense</button>
+              <button className="btn ">Income</button>
             </div>
 
             <p>Amout</p>
             <input
-              className="py-4 input-sm w-full rounded"
+              className="py-4 input-sm w-full rounded border"
               placeholder="₮ 000,00"
+              onChange={amountInput}
             />
             <div>
               <div className="dropdown ">
@@ -28,7 +35,7 @@ export function Showmodal() {
                 </div>
                 <ul
                   tabIndex={0}
-                  className="dropdown-content z-10 menu p-2 shadow fixed  bg-slate-900 text-slate-200 rounded-box w-52"
+                  className="dropdown-content z-10 menu p-2 shadow fixed  bg-white dark:bg-black dark:text-slate-100 text-slate-900 rounded-box w-52"
                 >
                   <li>
                     <a>Home</a>
@@ -45,18 +52,19 @@ export function Showmodal() {
                 </ul>
               </div>
             </div>
+            <div></div>
             <button className="btn w-full bg-blue-600 mt-4">Add Record</button>
           </div>
           <div className="p-4">
             <p className="">payee</p>
             <input
-              className="input-sm rounded w-full"
+              className="input-sm rounded border w-full"
               placeholder="write here"
             ></input>
             <p className="mt-4 mb-2">Note</p>
             <textarea
               type=""
-              className="input-sm rounded w-full h-full "
+              className="input-sm border rounded w-full h-full "
               placeholder="note"
             ></textarea>
           </div>
