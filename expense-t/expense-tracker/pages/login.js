@@ -1,4 +1,5 @@
 import { Vector } from "@/components/icons/Vector";
+
 export default function login() {
   return (
     <div>

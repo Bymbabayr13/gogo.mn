@@ -1,13 +1,39 @@
 import { useState } from "react";
-
-export function Showmodal() {
+import axios from "axios";
+export function Showmodal({ props }) {
+  const [close, setClose] = useState();
   const [amount, setAmount] = useState();
+  const [name, setName] = useState();
+  const [description, setDescription] = useState();
   function addCard() {
     document.getElementById("my_modal_2").showModal();
+    setClose(false);
   }
   function amountInput(event) {
     setAmount(event.target.value);
   }
+  function nameInput(event) {
+    setName(event.target.value);
+  }
+  function TextInput(event) {
+    setDescription(event.target.value);
+  }
+  const newRecord = async () => {
+    try {
+      await axios.post("http://localhost:4000/Transactions", {
+        name,
+        amount,
+        description,
+      });
+      setAmount("");
+      setName("");
+      setDescription("");
+      props();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <button className="btn bg-blue-600 text-white px-8" onClick={addCard}>
@@ -53,23 +79,26 @@ export function Showmodal() {
               </div>
             </div>
             <div></div>
-            <button className="btn w-full bg-blue-600 mt-4">Add Record</button>
+            <button className="btn w-full bg-blue-600 mt-4" onClick={newRecord}>
+              Add Record
+            </button>
           </div>
           <div className="p-4">
             <p className="">payee</p>
             <input
               className="input-sm rounded border w-full"
               placeholder="write here"
+              onChange={nameInput}
             ></input>
             <p className="mt-4 mb-2">Note</p>
             <textarea
               type=""
               className="input-sm border rounded w-full h-full "
               placeholder="note"
+              onChange={TextInput}
             ></textarea>
           </div>
         </div>
-
         <form method="dialog" className="modal-backdrop">
           <button>close</button>
         </form>
