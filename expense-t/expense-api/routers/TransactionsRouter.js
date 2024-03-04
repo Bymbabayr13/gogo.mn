@@ -14,9 +14,24 @@ transactionRouter.post("/", async (req, res) => {
 });
 
 transactionRouter.get("/", async (req, res) => {
-  const result = await sql`select * from transactions`;
-  res.json(result);
+  const getCategories = await sql`select transactions.id,
+  amount,
+  description,
+  transactions.name,
+  category_id,
+  categories.name category_name
+  from transactions
+  left join categories on transactions.category_id = categories.id;`;
+  res.json(getCategories);
 });
+
+// transactionRouter.put("/:id", async (req, res) => {
+//   const { id } = req.params;
+//   const { title, desc, amount } = req.body;
+//   const result =
+//     await sql`update transactions set name = ${title} ,description = ${desc}, amount = ${amount} where id= ${id} `;
+//   res.json(result);
+// });
 
 transactionRouter.delete("/:id", async (req, res) => {
   const { id } = req.params;

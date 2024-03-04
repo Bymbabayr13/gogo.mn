@@ -79,9 +79,14 @@ export function Showmodal({ props }) {
               </div>
             </div>
             <div></div>
-            <button className="btn w-full bg-blue-600 mt-4" onClick={newRecord}>
-              Add Record
-            </button>
+            <form method="dialog">
+              <button
+                className="btn w-full bg-blue-600 mt-4"
+                onClick={newRecord}
+              >
+                Add Record
+              </button>
+            </form>
           </div>
           <div className="p-4">
             <p className="">payee</p>

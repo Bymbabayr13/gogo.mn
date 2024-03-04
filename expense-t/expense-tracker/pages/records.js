@@ -1,7 +1,9 @@
+import { CategoryList } from "@/components/CategoryLIst";
 import { Header } from "@/components/Header";
 import { Showmodal } from "@/components/Showmodal";
 import axios from "axios";
 import { useEffect, useState } from "react";
+
 export default function () {
   const [render, setRender] = useState([]);
 
@@ -28,6 +30,9 @@ export default function () {
       }
     }
   }
+  async function updateCard() {
+    return;
+  }
   return (
     <div className="container mx-auto m-4">
       <Header />
@@ -35,6 +40,7 @@ export default function () {
         <div className="w-1/4 pr-4 mr-4">
           <h1 className="font-bold text-2xl mb-4">Records</h1>
           <Showmodal props={fetchdata} />
+          <CategoryList />
         </div>
 
         <div className="w-3/4 pl-4 ml-6">
@@ -50,9 +56,20 @@ export default function () {
                   >
                     delete
                   </button>
+                  <button
+                    onClick={() => {
+                      updateCard(item.id);
+                    }}
+                    className="btn"
+                  >
+                    update
+                  </button>
                   <p className="font-bold text-xl">{item.name}</p>
+                  <div className="flex gap-2">
+                    <input type="checkbox"></input>
+                    <p className="font-bold text-xl">{item.category_name}</p>
+                  </div>
                   <p>{item.description}</p>
-                  <p>{item.created_at}</p>
                 </div>
                 <div className="flex justify-end items-center">
                   <div>{item.amount}</div>
