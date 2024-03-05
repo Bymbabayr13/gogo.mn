@@ -4,12 +4,13 @@ const transactionRouter = express.Router();
 const { sql } = require("../config/database");
 
 transactionRouter.post("/", async (req, res) => {
-  const { name, amount, description } = req.body;
-
+  const { name, amount, description, selectedOption } = req.body;
+  console.log(selectedOption.value);
   const result =
-    await sql`insert into transactions(name, amount, description) values(${name},${Number(
+    await sql`insert into transactions(name, amount, description, category_id) values(${name},${Number(
       amount
-    )}, ${description})`;
+    )}, ${description} , ${selectedOption.value})`;
+  console.log(selectedOption);
   res.json(result);
 });
 

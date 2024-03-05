@@ -30,6 +30,7 @@ export default function () {
       }
     }
   }
+  console.log(render);
   async function updateCard() {
     return;
   }

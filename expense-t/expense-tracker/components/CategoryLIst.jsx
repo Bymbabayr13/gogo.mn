@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { FaEye } from "react-icons/fa";
-import { nanoid } from "nanoid";
 
 export function CategoryList() {
   const [categories, setCategories] = useState([]);
@@ -18,13 +17,12 @@ export function CategoryList() {
     setInputCategory(event.target.value);
   }
   async function createCategory() {
-    const id = (model.id = nanoid());
     try {
       await axios
-        .post("http://localhost:4000/Categories", { inputCategory, id })
-        .then(() => {
-          fetchCategory();
-        });
+        .post("http://localhost:4000/Categories", { inputCategory })
+        .then(() => {});
+      setInputCategory("");
+      fetchCategory();
     } catch (error) {
       console.log(error);
     }
@@ -66,9 +64,11 @@ export function CategoryList() {
                 onChange={valueOfTheCategory}
                 className="py-4 input-md rounded w-full"
               ></input>
-              <button onClick={createCategory} className="btn">
-                confirm
-              </button>
+              <form method="dialog">
+                <button onClick={createCategory} className="btn">
+                  confirm
+                </button>
+              </form>
             </div>
           </div>
         </dialog>

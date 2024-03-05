@@ -1,13 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
+
+import Select, { StylesConfig } from "react-select";
 export function Showmodal({ props }) {
   const [close, setClose] = useState();
   const [amount, setAmount] = useState();
   const [name, setName] = useState();
   const [description, setDescription] = useState();
+  const [categoryList, setCategoryList] = useState([]);
+  const [selectedOption, setSelectedOPtion] = useState();
   function addCard() {
     document.getElementById("my_modal_2").showModal();
     setClose(false);
+  }
+  function fetchCategories() {
+    fetch("http://localhost:4000/Categories")
+      .then((res) => res.json())
+      .then((data) => setCategoryList(data));
   }
   function amountInput(event) {
     setAmount(event.target.value);
@@ -18,12 +27,23 @@ export function Showmodal({ props }) {
   function TextInput(event) {
     setDescription(event.target.value);
   }
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
+  const options = categoryList.map((item) => {
+    return {
+      value: item.id,
+      label: item.name,
+    };
+  });
   const newRecord = async () => {
     try {
       await axios.post("http://localhost:4000/Transactions", {
         name,
         amount,
         description,
+        selectedOption,
       });
       setAmount("");
       setName("");
@@ -61,20 +81,14 @@ export function Showmodal({ props }) {
                 </div>
                 <ul
                   tabIndex={0}
-                  className="dropdown-content z-10 menu p-2 shadow fixed  bg-white dark:bg-black dark:text-slate-100 text-slate-900 rounded-box w-52"
+                  className="dropdown-content z-10 menu p-2 shadow fixed  bg-white  dark:text-slate-100 text-slate-900 rounded-box w-52"
                 >
-                  <li>
-                    <a>Home</a>
-                  </li>
-                  <li>
-                    <a>Gift</a>
-                  </li>
-                  <li>
-                    <a>Food</a>
-                  </li>
-                  <li>
-                    <a>Shopping</a>
-                  </li>
+                  <Select
+                    className="text-black"
+                    options={options}
+                    onChange={(value) => setSelectedOPtion(value)}
+                    defaultValue={selectedOption}
+                  />
                 </ul>
               </div>
             </div>
