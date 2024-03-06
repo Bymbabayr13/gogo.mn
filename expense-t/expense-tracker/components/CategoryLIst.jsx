@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { FaEye } from "react-icons/fa";
+import IconPicker from "react-icon-picker";
 
 export function CategoryList() {
   const [categories, setCategories] = useState([]);
@@ -27,6 +28,7 @@ export function CategoryList() {
       console.log(error);
     }
   }
+
   return (
     <div className="mt-4">
       <h1 className="font-bold text-xl mb-4">Categories</h1>
@@ -64,6 +66,7 @@ export function CategoryList() {
                 onChange={valueOfTheCategory}
                 className="py-4 input-md rounded w-full"
               ></input>
+
               <form method="dialog">
                 <button onClick={createCategory} className="btn">
                   confirm

@@ -3,15 +3,17 @@ import axios from "axios";
 
 import Select, { StylesConfig } from "react-select";
 export function Showmodal({ props }) {
-  const [close, setClose] = useState();
+  const [option, setOption] = useState("Exp");
   const [amount, setAmount] = useState();
   const [name, setName] = useState();
   const [description, setDescription] = useState();
   const [categoryList, setCategoryList] = useState([]);
   const [selectedOption, setSelectedOPtion] = useState();
+  const [date, setDate] = useState();
+  const [time, setTime] = useState();
+
   function addCard() {
     document.getElementById("my_modal_2").showModal();
-    setClose(false);
   }
   function fetchCategories() {
     fetch("http://localhost:4000/Categories")
@@ -44,6 +46,8 @@ export function Showmodal({ props }) {
         amount,
         description,
         selectedOption,
+        date,
+        time,
       });
       setAmount("");
       setName("");
@@ -53,21 +57,45 @@ export function Showmodal({ props }) {
       console.log(error);
     }
   };
-
   return (
     <div>
       <button className="btn bg-blue-600 text-white px-8" onClick={addCard}>
         +add
       </button>
       <dialog id="my_modal_2" className="modal ">
-        <div className="modal-box grid grid-cols-2 ">
+        <div className="modal-box grid grid-cols-2  ">
           <div className="p-4">
             <h3 className="font-bold text-lg mb-5">add record</h3>
             <div className="flex">
-              <button className="btn  bg-blue-600">Expense</button>
-              <button className="btn ">Income</button>
+              <button
+                className={`btn text-slate-100  , ${
+                  option == "Exp" ? "bg-blue-700" : "bg-black"
+                }`}
+                onClick={() => setOption("Exp")}
+              >
+                Expense
+              </button>
+              <button
+                className={`btn text-slate-100 , ${
+                  option == "Inc" ? "bg-green-600" : "bg-black"
+                }`}
+                onClick={() => setOption("Inc")}
+              >
+                Income
+              </button>
             </div>
-
+            <div className="flex my-4 gap-2">
+              <input
+                type="date"
+                onChange={(e) => setDate(e.target.value)}
+                className="rounded-md px-1"
+              />
+              <input
+                type="time"
+                onChange={(e) => setTime(e.target.value)}
+                className="rounded-md px-1"
+              />
+            </div>
             <p>Amout</p>
             <input
               className="py-4 input-sm w-full rounded border"
@@ -92,10 +120,12 @@ export function Showmodal({ props }) {
                 </ul>
               </div>
             </div>
-            <div></div>
+
             <form method="dialog">
               <button
-                className="btn w-full bg-blue-600 mt-4"
+                className={`btn w-full mt-4   text-slate-100 , ${
+                  option == "Inc" ? "bg-green-600" : "bg-blue-600"
+                }`}
                 onClick={newRecord}
               >
                 Add Record
