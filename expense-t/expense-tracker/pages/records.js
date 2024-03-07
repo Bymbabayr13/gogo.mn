@@ -6,13 +6,14 @@ import { useEffect, useState } from "react";
 
 export default function () {
   const [render, setRender] = useState([]);
+  const [hasah, setHasah] = useState("");
 
   useEffect(() => {
     fetchdata();
   }, []);
 
   function fetchdata() {
-    fetch("http://localhost:4000/Transactions", { cache: "no-store" })
+    fetch("http://localhost:4000/Transactions")
       .then((res) => res.json())
       .then((data) => setRender(data));
   }
@@ -30,10 +31,10 @@ export default function () {
       }
     }
   }
-  console.log(render);
   async function updateCard() {
     return;
   }
+
   return (
     <div className="container mx-auto m-4">
       <Header />
@@ -46,6 +47,13 @@ export default function () {
 
         <div className="w-3/4 pl-4 ml-6">
           {render.map((item) => {
+            function minus() {
+              // if (item.amount_type == "Exp") {
+              //   setHasah("-");
+              //   return hasah;
+              // }
+            }
+
             return (
               <div className="card grid grid-cols-2 my-4  bg-slate-700 p-4">
                 <div className="">
@@ -57,14 +65,14 @@ export default function () {
                   >
                     delete
                   </button>
-                  <button
+                  {/* <button
                     onClick={() => {
                       updateCard(item.id);
                     }}
                     className="btn"
                   >
                     update
-                  </button>
+              </button> */}
                   <p className="font-bold text-xl">{item.name}</p>
                   <div className="flex gap-2">
                     <input type="checkbox"></input>
@@ -73,7 +81,15 @@ export default function () {
                   <p>{item.description}</p>
                 </div>
                 <div className="flex justify-end items-center">
-                  <div>{item.amount}</div>
+                  <div
+                    className={`${
+                      item.amount_type === "Exp"
+                        ? "text-red-700"
+                        : "text-green-600 "
+                    }`}
+                  >
+                    {item.amount}
+                  </div>
                 </div>
               </div>
             );

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-
 import Select, { StylesConfig } from "react-select";
 export function Showmodal({ props }) {
   const [option, setOption] = useState("Exp");
@@ -11,7 +10,7 @@ export function Showmodal({ props }) {
   const [selectedOption, setSelectedOPtion] = useState();
   const [date, setDate] = useState();
   const [time, setTime] = useState();
-
+  const [amountType, setAmountType] = useState();
   function addCard() {
     document.getElementById("my_modal_2").showModal();
   }
@@ -48,6 +47,7 @@ export function Showmodal({ props }) {
         selectedOption,
         date,
         time,
+        option,
       });
       setAmount("");
       setName("");
@@ -57,6 +57,10 @@ export function Showmodal({ props }) {
       console.log(error);
     }
   };
+  function optionType() {
+    setOption("Exp");
+  }
+  console.log(option);
   return (
     <div>
       <button className="btn bg-blue-600 text-white px-8" onClick={addCard}>
@@ -71,7 +75,7 @@ export function Showmodal({ props }) {
                 className={`btn text-slate-100  , ${
                   option == "Exp" ? "bg-blue-700" : "bg-black"
                 }`}
-                onClick={() => setOption("Exp")}
+                onClick={optionType}
               >
                 Expense
               </button>

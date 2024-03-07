@@ -1,3 +1,4 @@
+import { Chart } from "@/components/Chart";
 import { Dashboard } from "@/components/Dashboard";
 import { Header } from "@/components/Header";
 export default function Home() {
@@ -5,6 +6,7 @@ export default function Home() {
     <div className="container mx-auto m-4">
       <Header />
       <Dashboard />
+      <Chart />
     </div>
   );
 }

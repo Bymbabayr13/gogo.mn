@@ -36,7 +36,6 @@ export function Allblog() {
     }
     setActiveFilter(item);
   }
-
   const arr = [
     "All",
     "github",
