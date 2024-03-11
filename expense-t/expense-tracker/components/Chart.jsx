@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+const dayjs = require('dayjs')
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -18,6 +19,7 @@ ChartJS.register(
   Tooltip,
   Legend
 );
+
 
 export function Chart() {
   const [chartArr, setChartArr] = useState([]);
@@ -60,24 +62,26 @@ export function Chart() {
     "November",
     "December",
   ];
-  chartArr.map((item) => {
-    if (item.amount_type == "Exp") {
-      expanse.push(item.amount);
-    } else {
-      income.push(item.amount);
-    }
-  });
-  console.log(expanse, income);
-
+ 
   function fetchdata() {
     let item = [];
     fetch("http://localhost:4000/Transactions")
       .then((res) => res.json())
       .then((data) => setChartArr(data));
   }
+  const months = dayjs(chartArr.created_at).format('MMMM')
+  
+  
+  
 
   useEffect(() => {
     fetchdata();
+
+    labels.map((item)=>{
+     if(item == months){
+     
+    }
+    })
   }, []);
 
   const data = {
@@ -90,7 +94,7 @@ export function Chart() {
         stack: "Stack 0",
       },
       {
-        label: "",
+        label: "Income",
         data: income,
         backgroundColor: "green",
         stack: "Stack 1",

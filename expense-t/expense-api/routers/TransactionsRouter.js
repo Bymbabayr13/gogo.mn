@@ -1,6 +1,6 @@
 const express = require("express");
 const transactionRouter = express.Router();
-dayjs().format();
+
 
 const { sql } = require("../config/database");
 
@@ -22,6 +22,7 @@ transactionRouter.get("/", async (req, res) => {
   description,
   transactions.name,
   category_id,
+  created_at,
   amount_type,
   categories.name category_name
   from transactions

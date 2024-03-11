@@ -4,7 +4,7 @@ import { useState } from "react";
 export default function login() {
   const [email , setEmail] = useState()
   const [pass , setPass] = useState()
-  console.log(pass , email)
+  console.log(pass , email) 
   return (
       <div className="grid grid-cols-2 h-full bg-white">
         <div className="  flex justify-center items-center p-4">
