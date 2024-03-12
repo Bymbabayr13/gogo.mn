@@ -1,7 +1,6 @@
 const express = require("express");
 const transactionRouter = express.Router();
 
-
 const { sql } = require("../config/database");
 
 transactionRouter.post("/", async (req, res) => {
@@ -13,7 +12,6 @@ transactionRouter.post("/", async (req, res) => {
       selectedOption.value
     }, ${Date.now()}, ${option})`;
   res.json(result);
-  console.log(selectedOption, date, time, selectedOption.value);
 });
 
 transactionRouter.get("/", async (req, res) => {
