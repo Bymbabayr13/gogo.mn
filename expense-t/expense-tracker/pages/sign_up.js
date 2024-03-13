@@ -9,19 +9,22 @@ export default function sign_up() {
   async function signUpBtn() {
     await axios
       .post("http://localhost:4000/Users", { name, newemail, newpass })
-      .then(() => alert("succes"))
+      .then(() => {
+        alert("succes");
+        window.location = "/login";
+      })
       .catch((e) => console.log(e));
   }
 
   return (
-    <div className="grid grid-cols-2 h-full bg-white">
+    <div className="grid grid-cols-2 h-screen bg-white">
       <div className="  flex justify-center items-center p-4">
         <div className="text-black">
-          <div className="flex gap-2 mb-28  justify-center items-center">
+          <div className="flex gap-2 mb-14  justify-center items-center">
             <Vector /> <p>Geld</p>
           </div>
           <h1 className="text-center text-black">Welcome Back</h1>
-          <p>Welcome back, Please enter your details</p>
+          <p className="mb-8">Welcome back, Please enter your details</p>
 
           <input
             onChange={(e) => setName(e.target.value)}

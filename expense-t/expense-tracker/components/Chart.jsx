@@ -71,20 +71,19 @@ export function Chart() {
   ];
 
   function fetchdata() {
-    let item = [];
     fetch("http://localhost:4000/Transactions")
       .then((res) => res.json())
-      .then((data) => setChartArr(data), console.log(chartArr));
+      .then((data) => setChartArr(data));
   }
   const months = dayjs(chartArr.created_at).format("MMMM");
 
   useEffect(() => {
     fetchdata();
 
-    labels.map((item) => {
-      if (item == months) {
-      }
-    });
+    // labels.map((item) => {
+    //   if (item == months) {
+    //   }
+    // });
   }, []);
 
   const data = {

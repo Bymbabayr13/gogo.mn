@@ -6,40 +6,31 @@ import { useEffect, useState } from "react";
 export default function login() {
   const [email, setEmail] = useState();
   const [pass, setPass] = useState();
-  const [user, setUser] = useState();
+  const [items, setItems] = useState();
 
-  // useEffect(() => {
-  //   fetchUsers();
-  // }, []);
-  // function fetchUsers() {
-  //   fetch("http://localhost:4000/Users")
-  //     .then((res) => res.json())
-  //     .then((data) => setUser(data))
-  //     .then(() => {});
-  // }
   async function postIntoLogin() {
     await axios
       .post("http://localhost:4000/Users/login", { email, pass })
       .then(() => {
         alert("success");
         localStorage.setItem("local", `${email}:${pass}`);
-        window.location = "/";
+        window.location = "/dashboard";
       })
       .catch((e) => {
-        alert(e.message);
+        alert(e.message, "aldaa");
       });
   }
 
   return (
     <>
-      <div className="grid grid-cols-2 h-full bg-white">
+      <div className="grid grid-cols-2 h-screen bg-white">
         <div className="  flex justify-center items-center p-4">
           <div className="text-black">
-            <div className="flex gap-2 mb-28  justify-center items-center">
+            <div className="flex gap-2 mb-14  justify-center items-center">
               <Vector /> <p>Geld</p>
             </div>
             <h1 className="text-center text-black">Welcome Back</h1>
-            <p>Welcome back, Please enter your details</p>
+            <p className="mb-8">Welcome back, Please enter your details</p>
 
             <input
               onChange={(e) => setEmail(e.target.value)}
