@@ -7,7 +7,7 @@ export function Showmodal({ props }) {
   const [name, setName] = useState();
   const [description, setDescription] = useState();
   const [categoryList, setCategoryList] = useState([]);
-  const [selectedOption, setSelectedOPtion] = useState();
+  const [selectedOption, setSelectedOption] = useState();
   const [date, setDate] = useState();
   const [time, setTime] = useState();
   const [amountType, setAmountType] = useState();
@@ -118,7 +118,7 @@ export function Showmodal({ props }) {
                   <Select
                     className="text-black"
                     options={options}
-                    onChange={(value) => setSelectedOPtion(value)}
+                    onChange={(value) => setSelectedOption(value)}
                     defaultValue={selectedOption}
                   />
                 </ul>

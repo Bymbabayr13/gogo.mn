@@ -11,7 +11,7 @@ export default function sign_up() {
       .post("http://localhost:4000/Users", { name, newemail, newpass })
       .then(() => {
         alert("succes");
-        window.location = "/login";
+        window.location = "/confirmation";
       })
       .catch((e) => console.log(e));
   }

@@ -85,7 +85,7 @@ export default function () {
                     className={`${
                       item.amount_type === "Exp"
                         ? "text-red-700"
-                        : "text-green-600 "
+                        : "text-green-600"
                     }`}
                   >
                     {item.amount}
