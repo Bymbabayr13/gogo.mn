@@ -116,12 +116,9 @@ export default function confirmation() {
               </div>
               <h1 className="text-center text-black">Good job</h1>
               <div className="mt-2">
-                <button
-                  onClick={secondStage}
-                  className="btn  bg-blue-600 w-full mt-4"
-                >
+                <a href="/dashboard" className="btn  bg-blue-600 w-full mt-4">
                   confirm
-                </button>
+                </a>
               </div>
             </div>
           </div>

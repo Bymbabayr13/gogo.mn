@@ -1,4 +1,4 @@
-import { Chart } from "@/components/Chart";
+import { Chart } from "@/components/Chart.1";
 import { Dashboard } from "@/components/Dashboard";
 import { DoughnutChart } from "@/components/DoughnutChart";
 import { Header } from "@/components/Header";

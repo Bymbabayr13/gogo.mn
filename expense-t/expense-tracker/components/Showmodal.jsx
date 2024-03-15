@@ -94,11 +94,6 @@ export function Showmodal({ props }) {
                 onChange={(e) => setDate(e.target.value)}
                 className="rounded-md px-1"
               />
-              <input
-                type="time"
-                onChange={(e) => setTime(e.target.value)}
-                className="rounded-md px-1"
-              />
             </div>
             <p>Amout</p>
             <input
