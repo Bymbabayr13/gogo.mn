@@ -103,22 +103,21 @@ export function Chart() {
 
   const marchStart = new Date("2024-3-01");
   const marchEnd = new Date("2024-3-31");
-  console.log();
+
   let value = 0;
   let result = 0;
 
   const income1 = chartArr.filter((item) => item.amount_type == "Inc");
   const expense1 = chartArr.filter((item) => item.amount_type == "Exp");
-  console.log(income1, expense1);
+
   for (let index = 0; index < income1.length; index++) {
     const march = dayjs(income1[index].dates).format("YYYY-MM-DD");
     const march1 = new Date(march);
 
     if (marchStart < march1 && march1 < marchEnd) {
       value = income1[index].amount + value;
-      console.log(value, "value");
+
       March = March + value;
-      console.log(March);
     }
   }
   //1
@@ -128,9 +127,8 @@ export function Chart() {
 
     if (marchStart < march1 && march1 < marchEnd) {
       result = expense1[index].amount + result;
-      console.log(result, "value");
+
       March1 = March1 + result;
-      console.log(March1);
     }
   }
 

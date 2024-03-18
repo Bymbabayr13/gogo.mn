@@ -93,6 +93,8 @@ export function Showmodal({ props }) {
                 type="date"
                 onChange={(e) => setDate(e.target.value)}
                 className="rounded-md px-1"
+                id="date"
+                name="date"
               />
             </div>
             <p>Amout</p>
