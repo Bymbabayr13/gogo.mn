@@ -1,24 +1,31 @@
 
 import { Inter } from "next/font/google";
+import { title } from "process";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
 
-  interface Point {
-    x: number;
-    y: number;
-  }
-   
-  function logPoint(p: Point) {
-    console.log(`${p.x}, ${p.y}`);
-  }
-   
-  // logs "12, 26"
-  const point = { x: 12, y: 26 };
-  logPoint(point);
-  return (
-<div>{point.x}</div>
-  );
+
+type post ={
+  black:string;
+  title:string;
+}
+type card ={
+  name :string;
+  title:string;
+  posts:post[]
+}
+
+const  card =(props:card) => {
+    const {name , title , posts} = props
+    return (
+      <div>
+      <h1>{title}</h1>
+      </div>
+        );
+}
+
+
 
 }
