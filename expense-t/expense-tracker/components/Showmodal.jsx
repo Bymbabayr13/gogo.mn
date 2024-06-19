@@ -143,7 +143,7 @@ export function Showmodal({ props }) {
             <p className="mt-4 mb-2">Note</p>
             <textarea
               type=""
-              className="input-sm border rounded w-full h-full "
+              className="input-sm border rounded w-full h-3/4 "
               placeholder="note"
               onChange={TextInput}
             ></textarea>
