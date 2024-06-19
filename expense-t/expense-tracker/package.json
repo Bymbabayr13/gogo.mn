@@ -13,7 +13,7 @@
     "chart.js": "^4.4.2",
     "dayjs": "^1.11.10",
     "nanoid": "^5.0.6",
-    "next": "14.1.0",
+    "next": "^14.2.4",
     "node": "^21.7.1",
     "react": "^18",
     "react-chartjs-2": "^5.2.0",
@@ -21,7 +21,8 @@
     "react-icon": "^1.0.0",
     "react-icon-picker": "^1.0.0",
     "react-icons": "^5.0.1",
-    "react-select": "^5.8.0"
+    "react-select": "^5.8.0",
+    "swr": "^2.2.5"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",

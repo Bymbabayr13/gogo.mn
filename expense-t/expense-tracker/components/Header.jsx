@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Vector } from "./icons/Vector";
 export function Header() {
   const arr = [
-    { name: "Dashboard", link: "/dashboard" },
+    { name: "Dashboard", link: "/" },
     { name: "Records", link: "/records" },
   ];
   return (

@@ -55,7 +55,7 @@ export default function () {
             }
 
             return (
-              <div className="card grid grid-cols-2 my-4  p-4 bg-slate-100">
+              <div className="card grid grid-cols-2 my-4  p-4 bg-slate-800">
                 <div className="">
                   <button
                     onClick={() => {
@@ -65,14 +65,6 @@ export default function () {
                   >
                     delete
                   </button>
-                  {/* <button
-                    onClick={() => {
-                      updateCard(item.id);
-                    }}
-                    className="btn"
-                  >
-                    update
-              </button> */}
                   <p className="font-bold text-xl">{item.name}</p>
                   <div className="flex gap-2">
                     <input type="checkbox"></input>
